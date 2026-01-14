@@ -42,7 +42,7 @@
                 <field name="imagen"/>
                 <templates>
                     <t t-name="kanban-box">
-                        <div class="card">
+                        <div class="oe_kanban_global_click card">
                             <img class="img-fluid"
                             t-att-src="kanban_image('restaurante.producto','imagen', record.id.raw_value, 'medium')" />
                             <div class="card-body">

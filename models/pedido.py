@@ -5,9 +5,16 @@ class Pedido(models.Model):
     _name = "restaurante.pedido"
     _description = "Pedido del restaurante"
     _rec_name = "nombre_cliente"
-
+    
     nombre_cliente = fields.Char(
         string="Nombre del cliente",
+        compute="_compute_nombre_cliente"
+    )
+
+    cliente_id = fields.Many2one(
+        comodel_name="res.partner",
+        string="Cliente",
+        domain="[('es_cliente_restaurante', '=', True)]",
         required=True
     )
 
@@ -49,6 +56,11 @@ class Pedido(models.Model):
         comodel_name="restaurante.camarero",
         string="Camarero"
     )
+    
+    @api.depends('cliente_id')
+    def _compute_nombre_cliente(self):
+        for pedido in self:
+            pedido.nombre_cliente = pedido.cliente_id.name if pedido.cliente_id else ''
 
     @api.depends('linea_ids.subtotal')
     def _compute_total(self):

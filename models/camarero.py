@@ -3,6 +3,7 @@ from odoo import models, fields
 class Camarero(models.Model):
     _name = "restaurante.camarero"
     _description = "Camarero del restaurante"
+    _rec_name = "nombre"
 
     nombre = fields.Char(
         string="Nombre",

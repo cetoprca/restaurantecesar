@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
+    <record id="view_partner_tree_restaurante" model="ir.ui.view">
+        <field name="name">res.partner.tree.restaurante</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//tree" position="inside">
+                <field name="cliente_id"/>
+            </xpath>
+        </field>
+    </record>
+
     <record id="view_res_partner_form_inherit_restaurante" model="ir.ui.view">
         <field name="name">res.partner.form.inherit.restaurante</field>
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
-            <!-- Insertamos un nuevo grupo al final de la pestaña de ventas y compras -->
             <xpath expr="//page[@name='sales_purchases']" position="after">
                 <page string="Restaurante">
                     <group>
@@ -22,5 +32,6 @@
         <field name="name">Clientes</field>
         <field name="res_model">res.partner</field>
         <field name="view_mode">tree,form</field>
+        <field name="domain">[("es_cliente_restaurante", "=", True)]</field>
     </record>
 </odoo>

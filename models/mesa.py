@@ -9,7 +9,7 @@ class Mesa(models.Model):
     numero = fields.Integer(
         string="Número de mesa",
         required=True,
-        default= 1 
+        default= 0 
     )
     
     ## para que no de error en la base de datos he tenido que matener aqui un numero estatico en vez de la lambda
@@ -51,10 +51,11 @@ class Mesa(models.Model):
             
     @api.model
     def create(self, vals):
-        if vals.get('es_cliente_restaurante', False) and vals.get('cliente_id', 0) == 0:
-            last = self.env['restaurante.mesa'].search([('numero','=',True)],order='numero desc', limit=1)
+        last = self.env['restaurante.mesa'].search([],order='numero desc', limit=1)
             
-            id = (lambda : (last.numero + 1 if last else 1))
+        id = (lambda : (last.numero + 1 if last else 1))
+        
+        if vals['numero'] < id():
+            vals['numero'] = id()
             
-            vals['numero'] = id
         return super().create(vals)

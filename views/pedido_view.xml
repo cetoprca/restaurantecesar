@@ -6,7 +6,7 @@
         <field name="model">restaurante.pedido</field>
         <field name="arch" type="xml">
             <tree>
-                <field name="nombre_cliente"/>
+                <field name="cliente_id"/>
                 <field name="mesa_id"/>
                 <field name="camarero_id"/>
                 <field name="total"/>
@@ -24,7 +24,7 @@
             <form>
                 <sheet>
                     <group>
-                        <field name="nombre_cliente"/>
+                        <field name="cliente_id"/>
                         <field name="mesa_id"/>
                         <field name="camarero_id"/>
                         <field name="estado"/>
