@@ -11,7 +11,17 @@ class Cliente(models.Model):
 
     cliente_id = fields.Integer(
         string="ID del Cliente",
-        default= 1
+        default= 1 
     )
     
-    ## la lambda funciona como la lambda del default del id de las mesas
+    ## para que no de error en la base de datos he tenido que matener aqui un numero estatico en vez de la lambda
+    ## pero para mantener el comportamiento he añadido un @api.model create() para realizar ahi la operacion
+    
+    @api.model
+    def create(self, vals):
+        if vals.get('es_cliente_restaurante', False) and vals.get('cliente_id', 0) == 0:
+            last = self.env['res.partner'].search([('es_cliente_restaurante','=',True)],order='cliente_id desc', limit=1)
+            id = (lambda : (last.cliente_id + 1 if last else 1))
+            
+            vals['cliente_id'] = id
+        return super().create(vals)

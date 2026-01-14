@@ -9,12 +9,11 @@ class Mesa(models.Model):
     numero = fields.Integer(
         string="Número de mesa",
         required=True,
-        default= 1 ##lambda self: self.env['restaurante.mesa'].search([], order='numero desc', limit=1).numero + 1 if self.env['restaurante.mesa'].search([], order='numero desc', limit=1) else 1
+        default= 1 
     )
     
-    ## La lambda es un if que busca el numero mas alto de mesa y le suma 1 en caso de que haya mesas, en caso contrario deja 1
-    ## el if funciona tal que asi: <valor_si> if <condicion> else <valor_no>, un poco confuso de parte de python si me preguntas a mi
-
+    ## para que no de error en la base de datos he tenido que matener aqui un numero estatico en vez de la lambda
+    ## pero para mantener el comportamiento he añadido un @api.model create() para realizar ahi la operacion
 
     capacidad = fields.Integer(
         string="Capacidad",
@@ -49,3 +48,13 @@ class Mesa(models.Model):
         for mesa in self:
             if mesa.numero <= 0:
                 raise ValidationError("El número de la mesa debe ser mayor que 0.")
+            
+    @api.model
+    def create(self, vals):
+        if vals.get('es_cliente_restaurante', False) and vals.get('cliente_id', 0) == 0:
+            last = self.env['restaurante.mesa'].search([('numero','=',True)],order='numero desc', limit=1)
+            
+            id = (lambda : (last.numero + 1 if last else 1))
+            
+            vals['numero'] = id
+        return super().create(vals)
