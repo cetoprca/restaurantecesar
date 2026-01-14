@@ -1,6 +1,7 @@
 from odoo import models, fields
 
 class Cliente(models.Model):
+    _name = "res.partner"
     _inherit = "res.partner"
 
     es_cliente_restaurante = fields.Boolean(
@@ -10,11 +11,7 @@ class Cliente(models.Model):
 
     cliente_id = fields.Integer(
         string="ID del Cliente",
-        default= lambda self: (
-            self.env['res.partner'].search([('es_cliente_restaurante','=',True)], order='codigo_cliente desc', limit=1).codigo_cliente + 1
-            if self.env['res.partner'].search([('es_cliente_restaurante','=',True)], order='codigo_cliente desc', limit=1)
-            else 1
-        )
+        default= 1
     )
     
     ## la lambda funciona como la lambda del default del id de las mesas

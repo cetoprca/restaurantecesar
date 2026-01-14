@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree -->
+    <record id="view_mesa_tree" model="ir.ui.view">
+        <field name="name">mesa.tree</field>
+        <field name="model">restaurante.mesa</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="numero"/>
+                <field name="capacidad"/>
+                <field name="estado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_mesa_form" model="ir.ui.view">
+        <field name="name">mesa.form</field>
+        <field name="model">restaurante.mesa</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="numero"/>
+                        <field name="capacidad"/>
+                        <field name="estado"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_mesas" model="ir.actions.act_window">
+        <field name="name">Mesas</field>
+        <field name="res_model">restaurante.mesa</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

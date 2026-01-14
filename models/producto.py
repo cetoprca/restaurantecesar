@@ -41,6 +41,10 @@ class Producto(models.Model):
         compute="_compute_cantidad_ingredientes",
         store=True
     )
+    
+    imagen = fields.Image(
+        string="Foto del producto"
+    )
 
     @api.depends('ingrediente_ids')
     def _compute_cantidad_ingredientes(self):

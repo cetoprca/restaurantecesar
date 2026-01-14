@@ -9,7 +9,7 @@ class Mesa(models.Model):
     numero = fields.Integer(
         string="Número de mesa",
         required=True,
-        default=lambda self: self.env['restaurante.mesa'].search([], order='numero desc', limit=1).numero + 1 if self.env['restaurante.mesa'].search([], order='numero desc', limit=1) else 1
+        default= 1 ##lambda self: self.env['restaurante.mesa'].search([], order='numero desc', limit=1).numero + 1 if self.env['restaurante.mesa'].search([], order='numero desc', limit=1) else 1
     )
     
     ## La lambda es un if que busca el numero mas alto de mesa y le suma 1 en caso de que haya mesas, en caso contrario deja 1

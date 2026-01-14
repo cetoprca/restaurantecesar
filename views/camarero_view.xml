@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree -->
+    <record id="view_camarero_tree" model="ir.ui.view">
+        <field name="name">camarero.tree</field>
+        <field name="model">restaurante.camarero</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nombre"/>
+                <field name="numero_empleado"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_camarero_form" model="ir.ui.view">
+        <field name="name">camarero.form</field>
+        <field name="model">restaurante.camarero</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="numero_empleado"/>
+                        <field name="mesa_ids" widget="many2many_tags"/>
+                        <field name="foto" widget="image"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Kanban -->
+    <record id="view_camarero_kanban" model="ir.ui.view">
+        <field name="name">camarero.kanban</field>
+        <field name="model">restaurante.camarero</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_small_column">
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="card">
+                            <img t-att-src="record.foto and 'data:image/png;base64,' + record.foto.raw_value or '/web/static/src/img/placeholder.png'" class="card-img-top"/>
+                            <div class="card-body">
+                                <strong><field name="nombre"/></strong>
+                                <p>Nº Empleado: <field name="numero_empleado"/></p>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_camareros" model="ir.actions.act_window">
+        <field name="name">Camareros</field>
+        <field name="res_model">restaurante.camarero</field>
+        <field name="view_mode">kanban,tree,form</field>
+    </record>
+</odoo>

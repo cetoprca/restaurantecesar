@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree -->
+    <record id="view_ingrediente_tree" model="ir.ui.view">
+        <field name="name">ingrediente.tree</field>
+        <field name="model">restaurante.ingrediente</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="nombre"/>
+                <field name="stock"/>
+                <field name="unidad"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_ingrediente_form" model="ir.ui.view">
+        <field name="name">ingrediente.form</field>
+        <field name="model">restaurante.ingrediente</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="nombre"/>
+                        <field name="stock"/>
+                        <field name="unidad"/>
+                        <field name="producto_ids" widget="many2many_tags"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_ingredientes" model="ir.actions.act_window">
+        <field name="name">Ingredientes</field>
+        <field name="res_model">restaurante.ingrediente</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

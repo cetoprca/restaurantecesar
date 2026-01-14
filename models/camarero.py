@@ -21,3 +21,7 @@ class Camarero(models.Model):
         column2="mesa_id",
         string="Mesas asignadas"
     )
+    
+    foto = fields.Image(
+        string="Foto del camarero"
+    )

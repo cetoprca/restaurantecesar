@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Menú principal del módulo -->
+    <menuitem id="menu_restaurante_root" name="Restaurante Cesar" sequence="10"/>
+
+    <!-- Submenús -->
+    <menuitem id="menu_mesas" name="Mesas" parent="menu_restaurante_root" sequence="1" action="action_mesas"/>
+    <menuitem id="menu_productos" name="Productos" parent="menu_restaurante_root" sequence="2" action="action_productos"/>
+    <menuitem id="menu_ingredientes" name="Ingredientes" parent="menu_restaurante_root" sequence="3" action="action_ingredientes"/>
+    <menuitem id="menu_pedidos" name="Pedidos" parent="menu_restaurante_root" sequence="4" action="action_pedidos"/>
+    <menuitem id="menu_camareros" name="Camareros" parent="menu_restaurante_root" sequence="5" action="action_camareros"/>
+    <menuitem id="menu_clientes" name="Clientes" parent="menu_restaurante_root" sequence="6" action="action_clientes"/>
+</odoo>

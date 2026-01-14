@@ -1,2 +1,8 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-access_restaurantecesar_restaurantecesar,restaurantecesar.restaurantecesar,model_restaurantecesar_restaurantecesar,base.group_user,1,1,1,1
+access_mesa,access_mesa,model_restaurante_mesa,base.group_user,1,1,1,1
+access_producto,access_producto,model_restaurante_producto,base.group_user,1,1,1,1
+access_ingrediente,access_ingrediente,model_restaurante_ingrediente,base.group_user,1,1,1,1
+access_pedido,access_pedido,model_restaurante_pedido,base.group_user,1,1,1,1
+access_linea_pedido,access_linea_pedido,model_restaurante_linea_pedido,base.group_user,1,1,1,1
+access_camarero,access_camarero,model_restaurante_camarero,base.group_user,1,1,1,1
+access_cliente,access_cliente,model_res_partner,base.group_user,1,1,1,1

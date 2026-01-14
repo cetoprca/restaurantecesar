@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Tree -->
+    <record id="view_linea_pedido_tree" model="ir.ui.view">
+        <field name="name">linea.pedido.tree</field>
+        <field name="model">restaurante.linea_pedido</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="pedido_id"/>
+                <field name="producto_id"/>
+                <field name="cantidad"/>
+                <field name="subtotal"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Form -->
+    <record id="view_linea_pedido_form" model="ir.ui.view">
+        <field name="name">linea.pedido.form</field>
+        <field name="model">restaurante.linea_pedido</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="pedido_id"/>
+                        <field name="producto_id"/>
+                        <field name="cantidad"/>
+                        <field name="subtotal"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action -->
+    <record id="action_linea_pedidos" model="ir.actions.act_window">
+        <field name="name">Líneas de Pedido</field>
+        <field name="res_model">restaurante.linea_pedido</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>
