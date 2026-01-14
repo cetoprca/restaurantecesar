@@ -36,10 +36,12 @@
         <field name="model">restaurante.camarero</field>
         <field name="arch" type="xml">
             <kanban class="o_kanban_small_column">
+                <field name="foto"/>
                 <templates>
                     <t t-name="kanban-box">
                         <div class="card">
-                            <img t-att-src="record.foto and 'data:image/png;base64,' + record.foto.raw_value or '/web/static/src/img/placeholder.png'" class="card-img-top"/>
+                            <img class="img-fluid"
+                            t-att-src="kanban_image('restaurante.camarero','foto', record.id.raw_value, 'medium')" />
                             <div class="card-body">
                                 <strong><field name="nombre"/></strong>
                                 <p>Nº Empleado: <field name="numero_empleado"/></p>
