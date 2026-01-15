@@ -11,9 +11,6 @@ class Mesa(models.Model):
         required=True,
         default=0
     )
-    
-    ## para que no de error en la base de datos he tenido que matener aqui un numero estatico en vez de la lambda
-    ## pero para mantener el comportamiento he añadido un @api.model create() para realizar ahi la operacion
 
     capacidad = fields.Integer(
         string="Capacidad",

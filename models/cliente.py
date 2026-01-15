@@ -21,9 +21,6 @@ class Cliente(models.Model):
         string="Pedidos del cliente"
     )
     
-    ## para que no de error en la base de datos he tenido que matener aqui un numero estatico en vez de la lambda
-    ## pero para mantener el comportamiento he añadido un @api.model create() para realizar ahi la operacion
-    
     @api.model
     def create(self, vals):
         if not vals.get('es_cliente_restaurante'):
