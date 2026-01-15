@@ -10,6 +10,8 @@ class Pedido(models.Model):
         string="Nombre del cliente",
         compute="_compute_nombre_cliente"
     )
+    
+    
 
     cliente_id = fields.Many2one(
         comodel_name="res.partner",
@@ -21,7 +23,8 @@ class Pedido(models.Model):
     mesa_id = fields.Many2one(
         comodel_name="restaurante.mesa",
         string="Mesa",
-        required=True
+        required=True,
+        ondelete='cascade'
     )
 
     linea_ids = fields.One2many(

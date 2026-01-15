@@ -50,6 +50,9 @@ class Producto(models.Model):
     def _compute_cantidad_ingredientes(self):
         for prod in self:
             prod.cantidad_ingredientes = len(prod.ingrediente_ids)
+            
+            if prod.cantidad_ingredientes == 0:
+                raise ValidationError("No puede haber un producto sin ingredientes")
 
     @api.constrains('precio')
     def _check_precio(self):

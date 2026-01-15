@@ -43,3 +43,12 @@ class Ingrediente(models.Model):
         for ingr in self:
             if ingr.stock < 0:
                 raise ValidationError("El stock no puede ser negativo.")
+            
+    def unlink(self):
+        # antes de borrar, revisamos que no tenga productos asociados
+        for ing in self:
+            if ing.producto_ids:
+                raise ValidationError(
+                    f"No se puede borrar el ingrediente {ing.nombre} porque está usado en productos."
+                )
+        return super().unlink()

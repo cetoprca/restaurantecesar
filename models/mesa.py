@@ -9,7 +9,7 @@ class Mesa(models.Model):
     numero = fields.Integer(
         string="Número de mesa",
         required=True,
-        default= 0 
+        default=0
     )
     
     ## para que no de error en la base de datos he tenido que matener aqui un numero estatico en vez de la lambda
@@ -34,7 +34,7 @@ class Mesa(models.Model):
     pedido_ids = fields.One2many(
         comodel_name="restaurante.pedido",
         inverse_name="mesa_id",
-        string="Pedidos"
+        string="Pedidos",
     )
 
     @api.constrains('capacidad')
@@ -49,13 +49,7 @@ class Mesa(models.Model):
             if mesa.numero <= 0:
                 raise ValidationError("El número de la mesa debe ser mayor que 0.")
             
-    @api.model
-    def create(self, vals):
-        last = self.env['restaurante.mesa'].search([],order='numero desc', limit=1)
-            
-        id = (lambda : (last.numero + 1 if last else 1))
-        
-        if vals['numero'] < id():
-            vals['numero'] = id()
-            
-        return super().create(vals)
+            other = self.search([('numero', '=', mesa.numero), ('id', '!=', mesa.id)])
+            if other:
+                raise ValidationError(f"Ya existe una mesa con el número {mesa.numero}")
+         

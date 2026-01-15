@@ -8,7 +8,8 @@ class LineaPedido(models.Model):
     pedido_id = fields.Many2one(
         comodel_name="restaurante.pedido",
         string="Pedido",
-        required=True
+        required=True,
+        ondelete='cascade'
     )
 
     producto_id = fields.Many2one(
