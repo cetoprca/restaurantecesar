@@ -25,11 +25,7 @@ class RestauranteMesaController(http.Controller):
 
                 jsonFinal.append(jsonMesa)
             
-            return Response(
-                status=200,
-                content_type='application/json',
-                response=jsonFinal
-            ) 
+            return jsonFinal
         
         except:
             return Response(
