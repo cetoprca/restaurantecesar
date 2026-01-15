@@ -15,15 +15,13 @@ class Camarero(models.Model):
         string="Número de empleado",
         required=True
     )
-
-    mesa_ids = fields.Many2many(
-        comodel_name="restaurante.mesa",
-        relation="camarero_mesa_rel",
-        column1="camarero_id",
-        column2="mesa_id",
-        string="Mesas asignadas"
-    )
     
+    pedido_ids = fields.One2many(
+        comodel_name="restaurante.pedido",
+        inverse_name="camarero_id",
+        string="Pedidos"
+    )
+
     foto = fields.Image(
         string="Foto del camarero"
     )
