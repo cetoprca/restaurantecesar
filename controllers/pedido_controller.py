@@ -43,14 +43,12 @@ class RestaurantePedidoController(http.Controller):
                     
             return jsonFinal
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
     
     @http.route('/api/pedido/add', auth='public', type='json', methods=['PUT'])
     def addPedido(self, **kw):
@@ -59,14 +57,12 @@ class RestaurantePedidoController(http.Controller):
             
             request.env['restaurante.pedido'].sudo().create(data)
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )    
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
     
     @http.route('/api/pedido/update', auth='public', type='json', methods=['PATCH'])
     def updatePedido(self, **kw):
@@ -81,14 +77,12 @@ class RestaurantePedidoController(http.Controller):
             
             pedido.sudo().write(data)
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
             
             
     @http.route('/api/pedido/delete', auth='public', type='json', methods=['DELETE'])
@@ -101,11 +95,9 @@ class RestaurantePedidoController(http.Controller):
             
             mesa.sudo().unlink()
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }

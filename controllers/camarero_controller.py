@@ -19,14 +19,12 @@ class RestauranteCamareroController(http.Controller):
             return jsonFinal
 
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
     
     @http.route('/api/camarero/add', auth='public', type='json', methods=['PUT'])
     def addCamarero(self, **kw):
@@ -37,14 +35,12 @@ class RestauranteCamareroController(http.Controller):
             request.env['restaurante.camarero'].sudo().create(data)
         
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
         
     
     @http.route('/api/camarero/update', auth='public', type='json', methods=['PATCH'])
@@ -61,14 +57,12 @@ class RestauranteCamareroController(http.Controller):
             
             camarero.sudo().write(data)
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
 
     @http.route('/api/camarero/delete', auth='public', type='json', methods=['DELETE'])
     def deleteCamarero(self, **kw):
@@ -81,11 +75,9 @@ class RestauranteCamareroController(http.Controller):
             
             camarero.sudo().unlink()
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }

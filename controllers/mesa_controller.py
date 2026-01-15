@@ -28,14 +28,12 @@ class RestauranteMesaController(http.Controller):
             return jsonFinal
         
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
     
     @http.route('/api/mesa/add', auth='public', type='json', methods=['PUT'])
     def addMesa(self, **kw):
@@ -44,14 +42,12 @@ class RestauranteMesaController(http.Controller):
             
             request.env['restaurante.mesa'].sudo().create(data)
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
         
     
     @http.route('/api/mesa/update', auth='public', type='json', methods=['PATCH'])
@@ -67,14 +63,12 @@ class RestauranteMesaController(http.Controller):
             
             mesa.sudo().write(data)
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
 
     @http.route('/api/mesa/delete', auth='public', type='json', methods=['DELETE'])
     def deleteMesa(self, **kw):
@@ -86,11 +80,9 @@ class RestauranteMesaController(http.Controller):
             
             mesa.sudo().unlink()
         except:
-            return Response(
-                status=400,
-                content_type='application/json',
-                response=json.dumps({
-                    "error":"Bad Request",
-                    "message":"Datos invalidos"
-                })
-            )
+            return {
+                'status':400,
+                'content_type':'application/json',
+                "error":"Bad Request",
+                "message":"Datos invalidos"
+                }
