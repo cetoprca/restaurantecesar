@@ -9,9 +9,7 @@ class Pedido(models.Model):
     nombre_cliente = fields.Char(
         string="Nombre del cliente",
         compute="_compute_nombre_cliente"
-    )
-    
-    
+    ) 
 
     cliente_id = fields.Many2one(
         comodel_name="res.partner",
