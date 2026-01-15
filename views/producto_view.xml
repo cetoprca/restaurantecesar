@@ -41,17 +41,24 @@
             <kanban class="o_kanban_small_column">
                 <field name="imagen"/>
                 <templates>
+
                     <t t-name="kanban-box">
+                        <!-- Caja card -->
                         <div class="oe_kanban_global_click card">
-                            <img class="img-fluid"
-                            t-att-src="kanban_image('restaurante.producto','imagen', record.id.raw_value, 'medium')" />
+                            <!-- Foto --><!-- Bootstrap!!!!! -->
+                            <img class="img-fluid" t-att-src="kanban_image('restaurante.producto','imagen', record.id.raw_value, 'medium')" />
+
+                            <!-- Cuerpo de la card --><!-- Bootstrap!!!!! -->
                             <div class="card-body">
-                                <strong><field name="nombre"/></strong>
-                                <p>Precio: <field name="precio"/> €</p>
-                                <p>Categoria: <field name="categoria"/></p>
+                                <strong><field name="nombre"/></strong><!-- Bootstrap!!!!! -->
+                                <p>Precio: <field name="precio"/> €</p><!-- Bootstrap!!!!! -->
+                                <p>Categoria: <field name="categoria"/></p><!-- Bootstrap!!!!! -->
                             </div>
+                            
                         </div>
+
                     </t>
+
                 </templates>
             </kanban>
         </field>

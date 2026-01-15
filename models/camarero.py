@@ -28,6 +28,9 @@ class Camarero(models.Model):
         string="Foto del camarero"
     )
     
+    def despedir(self):
+        self.unlink()
+    
     @api.constrains('numero_empleado')
     def _check_numero(self):
         for camarero in self:

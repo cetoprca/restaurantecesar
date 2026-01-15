@@ -38,16 +38,29 @@
             <kanban class="o_kanban_small_column">
                 <field name="foto"/>
                 <templates>
+
                     <t t-name="kanban-box">
+                        <!-- Card -->
                         <div class="oe_kanban_global_click card">
-                            <img class="img-fluid"
-                            t-att-src="kanban_image('restaurante.camarero','foto', record.id.raw_value, 'medium')" />
+                            <!-- Foto del camarero --><!-- Bootstrap!!!!! -->
+                            <img class="img-fluid" t-att-src="kanban_image('restaurante.camarero','foto', record.id.raw_value, 'medium')" />
+
+                            <!-- Cuerpo de la card --><!-- Bootstrap!!!!! -->
                             <div class="card-body">
                                 <strong><field name="nombre"/></strong>
-                                <p>Nº Empleado: <field name="numero_empleado"/></p>
+                                <p class="text-primary">Nº Empleado: <field name="numero_empleado"/></p>
+
+
+                                <!-- Bootstrap!!!!! -->
+                                <button name="despedir" type="object" class="btn btn-danger btn-sm mt-2">
+                                    Despedir
+                                </button>
+                                
                             </div>
                         </div>
+
                     </t>
+
                 </templates>
             </kanban>
         </field>
