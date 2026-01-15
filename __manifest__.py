@@ -32,5 +32,6 @@ Incluye vistas Kanban, Tree y Form, así como asignación automática de IDs.
         "views/cliente_view.xml",
         "views/restaurante_menu.xml",
     ],
+    "application":True
 }
 
